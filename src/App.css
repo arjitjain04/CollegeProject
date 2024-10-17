@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Title */
+.title {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #6dd5ed, #2193b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textAnimation 3s ease infinite;
+}
+
+/* Text Area */
+.text-area {
+  background: white;
+  border: 3px solid #e0e0e0;
+  border-radius: 15px;
+  height: 250px;
+  padding: 30px;
+  font-size: 1.2rem;
+  color: #34495e;
+  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  transition: border-color 0.4s;
+}
+
+.text-area:hover {
+  border-color: #6dd5ed;
+}
+
+.text-area p {
+  margin: 0;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Button styling */
+.button {
+  background: linear-gradient(90deg, #6dd5ed, #2193b0);
+  border: none;
   color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
 }
 
-@keyframes App-logo-spin {
+.button:hover:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.button.stop {
+  background: linear-gradient(90deg, #ff6a95, #ff3e55);
+}
+
+.button.stop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(255, 0, 0, 0.3);
+}
+
+/* Keyframes for fade in animation */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(50px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for text animation */
+@keyframes textAnimation {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .text-area {
+    height: 200px;
   }
 }
